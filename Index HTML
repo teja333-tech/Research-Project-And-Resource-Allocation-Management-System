@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Research Project & Resource Allocation Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Research Project & Resource Allocation Management System</h1>
+</header>
+
+<nav>
+    <a href="login.html">Login</a>
+    <a href="#about">About</a>
+    <a href="#modules">Modules</a>
+</nav>
+
+<section id="about">
+    <h2>About the Project</h2>
+    <p>
+        This system provides a centralized platform for managing research projects,
+        faculty, students, funding, resources, and project progress using MySQL.
+    </p>
+</section>
+
+<section id="modules">
+    <h2>Modules</h2>
+
+    <div class="card">Student Management</div>
+    <div class="card">Faculty Management</div>
+    <div class="card">Project Management</div>
+    <div class="card">Proposal Management</div>
+    <div class="card">Team Management</div>
+    <div class="card">Funding Management</div>
+    <div class="card">Resource Management</div>
+    <div class="card">Progress Review</div>
+    <div class="card">Final Outcome</div>
+
+</section>
+
+<footer>
+    © 2026 Research Project Management System
+</footer>
+
+</body>
+</html>
