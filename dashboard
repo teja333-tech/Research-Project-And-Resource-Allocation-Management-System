@@ -1,0 +1,92 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['username'])){
+header("Location:login.html");
+}
+
+?>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Research Project & Resource Allocation Management System</h1>
+
+</header>
+
+<h2 align="center">
+
+Welcome
+
+<?php
+
+echo $_SESSION['username'];
+
+?>
+
+</h2>
+
+<center>
+
+<table border="1" cellpadding="15">
+
+<tr>
+
+<td><a href="students.php">Students</a></td>
+
+<td><a href="faculty.php">Faculty</a></td>
+
+<td><a href="projects.php">Projects</a></td>
+
+</tr>
+
+<tr>
+
+<td><a href="teams.php">Teams</a></td>
+
+<td><a href="team_members.php">Team Members</a></td>
+
+<td><a href="proposal.php">Proposal</a></td>
+
+</tr>
+
+<tr>
+
+<td><a href="funding.php">Funding</a></td>
+
+<td><a href="resources.php">Resources</a></td>
+
+<td><a href="resource_usage.php">Resource Usage</a></td>
+
+</tr>
+
+<tr>
+
+<td><a href="progress_review.php">Progress Review</a></td>
+
+<td><a href="final_outcome.php">Final Outcome</a></td>
+
+<td><a href="logout.php">Logout</a></td>
+
+</tr>
+
+</table>
+
+</center>
+
+</body>
+
+</html>
