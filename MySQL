@@ -1,0 +1,120 @@
+CREATE DATABASE research_db;
+USE research_db;
+
+-- Faculty
+CREATE TABLE faculty (
+    faculty_id INT AUTO_INCREMENT PRIMARY KEY,
+    faculty_name VARCHAR(100),
+    department VARCHAR(100),
+    email VARCHAR(100)
+);
+
+-- Students
+CREATE TABLE students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_name VARCHAR(100),
+    department VARCHAR(100),
+    year INT,
+    email VARCHAR(100)
+);
+
+-- Projects
+CREATE TABLE projects (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150),
+    description TEXT,
+    start_date DATE,
+    end_date DATE,
+    status VARCHAR(30),
+    faculty_id INT,
+    FOREIGN KEY (faculty_id) REFERENCES faculty(faculty_id)
+);
+
+-- Teams
+CREATE TABLE teams (
+    team_id INT AUTO_INCREMENT PRIMARY KEY,
+    team_name VARCHAR(100),
+    project_id INT,
+    FOREIGN KEY(project_id) REFERENCES projects(project_id)
+);
+
+-- Team Members
+CREATE TABLE team_members (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    team_id INT,
+    student_id INT,
+    FOREIGN KEY(team_id) REFERENCES teams(team_id),
+    FOREIGN KEY(student_id) REFERENCES students(student_id)
+);
+
+-- Proposal
+CREATE TABLE proposals(
+    proposal_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    proposal_date DATE,
+    status VARCHAR(30),
+    remarks TEXT,
+    FOREIGN KEY(project_id) REFERENCES projects(project_id)
+);
+
+-- Funding
+CREATE TABLE funding(
+    funding_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    sponsor VARCHAR(100),
+    allocated_amount DECIMAL(10,2),
+    used_amount DECIMAL(10,2),
+    FOREIGN KEY(project_id) REFERENCES projects(project_id)
+);
+
+-- Resources
+CREATE TABLE resources(
+    resource_id INT AUTO_INCREMENT PRIMARY KEY,
+    resource_name VARCHAR(100),
+    quantity INT,
+    availability VARCHAR(20)
+);
+
+-- Resource Usage
+CREATE TABLE resource_usage(
+    usage_id INT AUTO_INCREMENT PRIMARY KEY,
+    resource_id INT,
+    project_id INT,
+    usage_date DATE,
+    duration INT,
+    FOREIGN KEY(resource_id) REFERENCES resources(resource_id),
+    FOREIGN KEY(project_id) REFERENCES projects(project_id)
+);
+
+-- Progress Review
+CREATE TABLE progress_review(
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    review_date DATE,
+    status VARCHAR(50),
+    comments TEXT,
+    FOREIGN KEY(project_id) REFERENCES projects(project_id)
+);
+
+-- Final Outcome
+CREATE TABLE final_outcome(
+    outcome_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    completion_date DATE,
+    result VARCHAR(100),
+    grade VARCHAR(20),
+    FOREIGN KEY(project_id) REFERENCES projects(project_id)
+);
+
+-- Login
+CREATE TABLE users(
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(100),
+    role VARCHAR(20)
+);
+
+INSERT INTO users(username,password,role)
+VALUES
+('student','1234','Student'),
+('faculty','1234','Faculty');
